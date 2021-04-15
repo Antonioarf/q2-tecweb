@@ -1,0 +1,42 @@
+{% extends "notes/base.html" %}
+{% load static %}
+
+{% block content %}
+<!-- <img src="{% static 'notes/img/logo-getit.png' %}" /> -->
+<div class="appbar">
+  <img class="logo" src="{% static 'notes/img/logo-getit.png' %}" />  
+  <span class="subtitle">Como o Post-it, mas com outro verbo</span>
+</div>
+<form method="post" class="form-card">
+  {% csrf_token %}
+  <input class="form-card-title" type="text" name="titulo" placeholder="Título"/>
+  <textarea class="autoresize" name="detalhes" placeholder="Digite o conteúdo..."></textarea>
+  <!-- <input class="form-card-title1" type="text" name="tag" placeholder="Insira a tag" /> -->
+
+  <button class="btn" type="submit">Criar</button>
+</form>
+
+</div>
+
+<div class="card-container">
+  {% for note in notes %}
+  <div class="card" id="card{{ note.id }}" >
+    <h3 class="card-title" id="tx1{{ note.id }}"  >{{ note.title }}</h3>
+    <div class="card-content">
+      <p id="tx2{{ note.id }}" >{{ note.content }}</p>
+    </div>
+    <div class="div_botao">
+      </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}
+
+  <!-- <div class="div_tag">
+  <div><input type="radio" id="male" name="tag" value="Tecweb"><label for="Tecweb">Tecweb</label></div>
+  <div><input type="radio" id="male" name="tag" value="Camadas"><label for="Camadas">Camadas</label></div>
+  <div><input type="radio" id="male" name="tag" value="Empretec"><label for="Empretec">Empretec</label></div>
+  <div><input type="radio" id="male" name="tag" value="ModCom"><label for="ModCom">ModCom</label></div>
+  <div><input type="radio" id="male" name="tag" value="Eletromag"><label for="Eletromag">Eletromag</label></div>
+  </div> -->
